@@ -1,1 +1,52 @@
-
+[
+  {
+    "file": "hero.jpg",
+    "sourceUrl": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing2/3OKTBMay01784158342jwugZ3wp08zzZXCWrPOIiyNS7pQz0fYoQD300Z0LrEbNS/intro/intro-keyart-large-up",
+    "downloadUrl": "https://assets.nintendo.com/image/upload/c_limit,w_1600/f_jpg/q_auto/Marketing2/3OKTBMay01784158342jwugZ3wp08zzZXCWrPOIiyNS7pQz0fYoQD300Z0LrEbNS/intro/intro-keyart-large-up"
+  },
+  {
+    "file": "trailer.jpg",
+    "sourceUrl": "https://assets.nintendo.com/image/upload/f_auto,q_auto/Marketing2/3OKTBMay01784158342jwugZ3wp08zzZXCWrPOIiyNS7pQz0fYoQD300Z0LrEbNS/trailer/Fallback",
+    "downloadUrl": "https://assets.nintendo.com/image/upload/c_limit,w_1100/f_jpg/q_auto/Marketing2/3OKTBMay01784158342jwugZ3wp08zzZXCWrPOIiyNS7pQz0fYoQD300Z0LrEbNS/trailer/Fallback"
+  },
+  {
+    "file": "gallery-1.jpg",
+    "sourceUrl": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing2/3OKTBMay01784158342jwugZ3wp08zzZXCWrPOIiyNS7pQz0fYoQD300Z0LrEbNS/gallery-section/TLOZ-OOT_1",
+    "downloadUrl": "https://assets.nintendo.com/image/upload/c_limit,w_1100/f_jpg/q_auto/Marketing2/3OKTBMay01784158342jwugZ3wp08zzZXCWrPOIiyNS7pQz0fYoQD300Z0LrEbNS/gallery-section/TLOZ-OOT_1"
+  },
+  {
+    "file": "gallery-2.jpg",
+    "sourceUrl": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing2/3OKTBMay01784158342jwugZ3wp08zzZXCWrPOIiyNS7pQz0fYoQD300Z0LrEbNS/gallery-section/TLOZ-OOT_2",
+    "downloadUrl": "https://assets.nintendo.com/image/upload/c_limit,w_1100/f_jpg/q_auto/Marketing2/3OKTBMay01784158342jwugZ3wp08zzZXCWrPOIiyNS7pQz0fYoQD300Z0LrEbNS/gallery-section/TLOZ-OOT_2"
+  },
+  {
+    "file": "gallery-3.jpg",
+    "sourceUrl": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing2/3OKTBMay01784158342jwugZ3wp08zzZXCWrPOIiyNS7pQz0fYoQD300Z0LrEbNS/gallery-section/TLOZ-OOT_3",
+    "downloadUrl": "https://assets.nintendo.com/image/upload/c_limit,w_1100/f_jpg/q_auto/Marketing2/3OKTBMay01784158342jwugZ3wp08zzZXCWrPOIiyNS7pQz0fYoQD300Z0LrEbNS/gallery-section/TLOZ-OOT_3"
+  },
+  {
+    "file": "gallery-4.jpg",
+    "sourceUrl": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing2/3OKTBMay01784158342jwugZ3wp08zzZXCWrPOIiyNS7pQz0fYoQD300Z0LrEbNS/gallery-section/TLOZ-OOT_4",
+    "downloadUrl": "https://assets.nintendo.com/image/upload/c_limit,w_1100/f_jpg/q_auto/Marketing2/3OKTBMay01784158342jwugZ3wp08zzZXCWrPOIiyNS7pQz0fYoQD300Z0LrEbNS/gallery-section/TLOZ-OOT_4"
+  },
+  {
+    "file": "gallery-5.jpg",
+    "sourceUrl": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing2/3OKTBMay01784158342jwugZ3wp08zzZXCWrPOIiyNS7pQz0fYoQD300Z0LrEbNS/gallery-section/TLOZ-OOT_5",
+    "downloadUrl": "https://assets.nintendo.com/image/upload/c_limit,w_1100/f_jpg/q_auto/Marketing2/3OKTBMay01784158342jwugZ3wp08zzZXCWrPOIiyNS7pQz0fYoQD300Z0LrEbNS/gallery-section/TLOZ-OOT_5"
+  },
+  {
+    "file": "gallery-6.jpg",
+    "sourceUrl": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing2/3OKTBMay01784158342jwugZ3wp08zzZXCWrPOIiyNS7pQz0fYoQD300Z0LrEbNS/gallery-section/TLOZ-OOT_6",
+    "downloadUrl": "https://assets.nintendo.com/image/upload/c_limit,w_1100/f_jpg/q_auto/Marketing2/3OKTBMay01784158342jwugZ3wp08zzZXCWrPOIiyNS7pQz0fYoQD300Z0LrEbNS/gallery-section/TLOZ-OOT_6"
+  },
+  {
+    "file": "gallery-7.jpg",
+    "sourceUrl": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing2/3OKTBMay01784158342jwugZ3wp08zzZXCWrPOIiyNS7pQz0fYoQD300Z0LrEbNS/gallery-section/TLOZ-OOT_7",
+    "downloadUrl": "https://assets.nintendo.com/image/upload/c_limit,w_1100/f_jpg/q_auto/Marketing2/3OKTBMay01784158342jwugZ3wp08zzZXCWrPOIiyNS7pQz0fYoQD300Z0LrEbNS/gallery-section/TLOZ-OOT_7"
+  },
+  {
+    "file": "gallery-8.jpg",
+    "sourceUrl": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing2/3OKTBMay01784158342jwugZ3wp08zzZXCWrPOIiyNS7pQz0fYoQD300Z0LrEbNS/gallery-section/TLOZ-OOT_8",
+    "downloadUrl": "https://assets.nintendo.com/image/upload/c_limit,w_1100/f_jpg/q_auto/Marketing2/3OKTBMay01784158342jwugZ3wp08zzZXCWrPOIiyNS7pQz0fYoQD300Z0LrEbNS/gallery-section/TLOZ-OOT_8"
+  }
+]
