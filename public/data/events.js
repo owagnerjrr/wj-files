@@ -1,1 +1,7 @@
+// Datas verificadas nas fontes oficiais em 19/09/2026. Atualização editorial manual.
+export const events = [
+ {id:'zelda-oot',title:'The Legend of Zelda: Ocarina of Time',slug:'zelda-oot',date:'2026-11-05',category:'games',subcategory:'Nintendo Switch 2',type:'Lançamento',description:'Lançamento confirmado na página oficial da Nintendo Brasil.',company:'Nintendo',platform:'Nintendo Switch 2',verified:true,dateStatus:'confirmed',officialUrl:'https://www.nintendo.com/pt-br/store/products/the-legend-of-zelda-ocarina-of-time-switch-2/',sourceUrl:'https://www.nintendo.com/pt-br/store/products/the-legend-of-zelda-ocarina-of-time-switch-2/',url:'https://www.nintendo.com/pt-br/store/products/the-legend-of-zelda-ocarina-of-time-switch-2/',source:'Nintendo',featured:true,status:'published'},
+ {id:'gta-vi',title:'Grand Theft Auto VI',slug:'gta-vi',date:'2026-11-19',category:'games',subcategory:'PS5 / Xbox Series X|S',type:'Lançamento',description:'Lançamento anunciado pela Rockstar Games. Confira informações e eventuais atualizações no site oficial.',url:'https://www.rockstargames.com/VI',source:'Rockstar Games',featured:true,status:'published'},
+ {id:'zelda-movie',title:'The Legend of Zelda — filme',slug:'zelda-movie',date:'2027-04-30',category:'filmes',subcategory:'Cinema',type:'Estreia',description:'Estreia mundial anunciada pela Nintendo. A programação local deve ser consultada na sua região.',url:'https://www.nintendo.com/au/zelda/',source:'Nintendo',featured:true,status:'published'}
+];
 
