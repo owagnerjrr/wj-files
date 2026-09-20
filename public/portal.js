@@ -21,22 +21,15 @@ getEvents().then(events=>{searchItems.push(...events.map(e=>({title:e.title,cate
 function search(){const found=searchItems.filter(a=>normalize(a.title+' '+a.category).includes(normalize(input.value.trim())));results.replaceChildren();for(const group of [...new Set(found.map(a=>a.category))]){const h=document.createElement('h3');h.textContent=group;results.append(h);for(const item of found.filter(a=>a.category===group)){const a=document.createElement('a');a.href=item.href;a.textContent=item.title+' ↗';results.append(a)}}if(!found.length)results.textContent='Nenhum conteúdo encontrado. Tente outro termo.';}
 document.querySelector('.search-toggle').onclick=()=>{dialog.showModal();search();input.focus()};input.oninput=search;
 // O feed mantém o estado vazio até existirem publicações reais.
-import {mountNewsFeed,publishedArticles} from './components/newsFeed.js';
+import {mountNewsFeed,publishedArticles,mountNewsFilters} from './components/newsFeed.js';
+import {renderArticle} from './components/articlePage.js';
+if(location.pathname==='/noticias')mountNewsFilters(document.querySelector('.category-topics'),new URLSearchParams(location.search).get('tema'));
 const feed=document.querySelector('.latest .editorial-empty')||document.querySelector('.category-page .editorial-empty');
 if(feed)mountNewsFeed(feed,{category:location.pathname==='/'||location.pathname==='/noticias'?undefined:location.pathname.split('/').pop(),topic:new URLSearchParams(location.search).get('tema')||undefined});
 searchItems.push(...publishedArticles().map(a=>({title:a.title,category:a.category,href:'/noticias/'+encodeURIComponent(a.slug)})));
 if(location.pathname.startsWith('/noticias/')){
- const article=publishedArticles().find(a=>a.slug===decodeURIComponent(location.pathname.slice('/noticias/'.length)));
- app.innerHTML='<article class="portal-container info-page article-page"></article>';const container=app.firstElementChild;
- if(!article){container.innerHTML='<h1>Notícia não encontrada.</h1><p>Esta publicação não está disponível.</p><a href="/noticias">Voltar às notícias →</a>';document.title='Notícia não encontrada — WJ Files';}
- else{document.title=article.title+' — WJ Files';document.querySelector('meta[name="description"]').content=article.subtitle||article.title;
- for(const [tag,text] of [['span',article.category],['h1',article.title],['p',article.subtitle],['p',article.author+' · '+new Date(article.publishedAt).toLocaleString('pt-BR')]]){const node=document.createElement(tag);node.textContent=text;container.append(node)}
- if(article.coverImage){const img=document.createElement('img');img.src=article.coverImage;img.alt=article.title;img.style.width='100%';container.append(img)}
- for(const paragraph of (Array.isArray(article.content)?article.content:String(article.content||'').split('\n'))){const p=document.createElement('p');p.textContent=paragraph;container.append(p)}
- const tags=document.createElement('p');tags.textContent=(article.tags||[]).join(' · ');container.append(tags);
- for(const related of publishedArticles().filter(a=>(article.relatedContent||[]).includes(a.slug))){const a=document.createElement('a');a.href='/noticias/'+encodeURIComponent(related.slug);a.textContent=related.title;container.append(a)}
- }
+ let slug;try{slug=decodeURIComponent(location.pathname.slice('/noticias/'.length))}catch{slug=''}
+ renderArticle(app,slug);
 }
-
 
 const scene=document.createElement('div');scene.className='pixel-watch';scene.setAttribute('role','img');scene.setAttribute('aria-label','Dois investigadores em pixel art observam um disco voador flutuando');scene.innerHTML=[['investigator','agent-sprite'],['ufo','ufo-sprite'],['investigator-red','agent-sprite']].map(([name,cls])=>`<picture><source media="(prefers-reduced-motion: reduce)" srcset="/assets/${name}-still.png"><img class="${cls}" src="/assets/${name}.gif" alt="" width="${cls==='ufo-sprite'?70:40}" height="${cls==='ufo-sprite'?42:80}"></picture>`).join('');document.querySelector('.header').append(scene);
