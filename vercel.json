@@ -1,0 +1,11 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "rewrites": [
+    { "source": "/zelda", "destination": "/index.html" },
+    { "source": "/noticias/:path*", "destination": "/index.html" },
+    { "source": "/:page(games|filmes|series|tecnologia|misterios|videos|projetos|calendario|sobre|contato|privacidade)", "destination": "/index.html" }
+  ]
+}
