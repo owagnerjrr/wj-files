@@ -23,7 +23,7 @@ export function mountNewsFilters(root,selected){
  for(const label of ['Todas',...newsTopics]){const a=document.createElement('a');a.textContent=label;a.href=label==='Todas'?'/noticias':'/noticias?tema='+encodeURIComponent(label);if(normalized(selected||'Todas')===normalized(label)||(!selected&&label==='Todas')||selected==='Últimas notícias'&&label==='Todas')a.setAttribute('aria-current','page');nav.append(a)}root.replaceWith(nav);
 }
 export function mountNewsFeed(root,options={}){
- const {pageSize=6}=options;const items=filterArticles(options);let visible=pageSize;root.className='news-feed';
+ const {pageSize=6}=options;const items=filterArticles(options,options.items||publishedArticles());let visible=pageSize;root.className='news-feed';
  function draw(){root.replaceChildren();if(!items.length){const p=document.createElement('p');p.className='editorial-empty';p.textContent='Nenhuma matéria publicada para este assunto ainda.';root.append(p);return}
  for(const item of items.slice(0,visible)){const a=document.createElement('a');a.className='news-row';a.href=articleUrl(item);a.append(makeCover(item));const body=document.createElement('div');
  for(const [tag,text,cls] of [['span',categoryLabels[item.category]||item.category,'category-label'],['h3',item.title,''],['p',item.subtitle,'news-summary'],['time',formatDate(item.publishedAt),''],['span','Ler notícia →','news-read']]){const node=document.createElement(tag);node.textContent=text;node.className=cls;if(tag==='time')node.dateTime=item.publishedAt;body.append(node)}a.append(body);root.append(a)}
