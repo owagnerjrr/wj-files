@@ -1,7 +1,7 @@
 // Cadastro manual; datas da redação e das fontes são distintas.
 export const articles = [
  {
- slug:'esp32-agenda-nextcloud',storyKey:'esp32-nextcloud-desktop-calendar',
+ slug:'esp32-agenda-nextcloud',storyKey:'esp32-nextcloud-desktop-calendar',featuredType:'secondary',
  title:'Uma agenda de mesa com ESP32 coloca os compromissos fora do celular',
  subtitle:'Projeto independente combina uma pequena tela LCD com o Nextcloud e dá à agenda digital uma presença física.',
  category:'tecnologia',tags:['Hardware','Tecnologia'],illustration:'circuit',author:'Redação WJ Files',publishedAt:'2026-09-20T08:00:00-03:00',status:'published',
@@ -13,7 +13,7 @@ export const articles = [
  sources:[{name:'Hardware.com.br',title:'Entusiasta cria calendário de mesa com ESP32 para consultar a agenda sem celular',publishedAt:'2026-09-19',url:'https://www.hardware.com.br/noticias/esp32-calendario-nextcloud-display-lcd/'}],videos:[],relatedContent:['investigacao-postuma-switch-android']
  },
  {
- slug:'investigacao-postuma-switch-android',storyKey:'posthumous-investigation-switch-android-launch',
+ slug:'investigacao-postuma-switch-android',storyKey:'posthumous-investigation-switch-android-launch',featuredType:'primary',
  title:'A Investigação Póstuma leva o mistério de Brás Cubas ao Switch e ao Android',
  subtitle:'A aventura brasileira amplia suas plataformas com um caso em que repetir o dia faz parte do trabalho do detetive.',
  category:'games',tags:['Games','Nintendo','PC'],illustration:'detective',
@@ -30,7 +30,7 @@ export const articles = [
  videos:[{youtubeId:'c6HmBNxV5cc',title:'A Investigação Póstuma — teaser de gameplay',credit:'Vídeo disponibilizado no press kit da Mother Gaia Studio. Teaser anterior ao lançamento nos portáteis.',sourceUrl:'https://mothergaia.com.br/press/sheet.php?p=the_posthumous_investigation'}],relatedContent:['core-keeper-riders-underground']
  },
  {
- slug:'core-keeper-riders-underground',storyKey:'core-keeper-1-3-riders-release',
+ slug:'core-keeper-riders-underground',storyKey:'core-keeper-1-3-riders-release',featuredType:'secondary',
  title:'Core Keeper prepara montarias e novas rotas pelo subterrâneo',
  subtitle:'Riders of the Underground está previsto para 21 de setembro; a atualização gratuita amplia as formas de explorar.',
  category:'games',tags:['Games','Nintendo','PlayStation','Xbox','PC'],illustration:'cave',author:'Redação WJ Files',publishedAt:'2026-09-20T07:40:00-03:00',status:'published',
