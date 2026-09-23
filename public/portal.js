@@ -1,5 +1,6 @@
 import {installCalendar,mountCalendar} from './components/calendar.js';
 import {getEvents,normalize} from './services/calendarService.js';
+import {mountHomeHighlights} from './components/homeHighlights.js';
 const categories=[['noticias','Notícias'],['games','Games'],['filmes','Filmes'],['series','Séries'],['tecnologia','Tecnologia'],['misterios','Mistérios'],['videos','Vídeos'],['projetos','Projetos']];
 const topics=['Últimas notícias','Nintendo','PlayStation','Xbox','PC','Cinema','Streaming','IA','UFO'];
 const subcategories={games:['Nintendo','PlayStation','Xbox','PC','Retro','Indies'],filmes:['Cinema','Streaming'],series:['Streaming','Temporadas'],tecnologia:['IA','Programação','Hardware'],misterios:['UFO','História','Investigações'],videos:['Trailers','Vídeos'],projetos:['Sites','Experimentos']};
@@ -27,6 +28,17 @@ if(location.pathname==='/noticias')mountNewsFilters(document.querySelector('.cat
 const feed=document.querySelector('.latest .editorial-empty')||document.querySelector('.category-page .editorial-empty');
 if(feed)mountNewsFeed(feed,{category:location.pathname==='/'||location.pathname==='/noticias'?undefined:location.pathname.split('/').pop(),topic:new URLSearchParams(location.search).get('tema')||undefined});
 searchItems.push(...publishedArticles().map(a=>({title:a.title,category:a.category,href:'/noticias/'+encodeURIComponent(a.slug)})));
+if(location.pathname==='/'){
+ mountHomeHighlights(app.querySelector('.headline-grid'),publishedArticles());
+ // Populate existing editorial sections without changing category pages or URLs.
+ for(const section of app.querySelectorAll('.category-section')){
+  const slug=section.querySelector('.editorial-heading a').getAttribute('href').slice(1);
+  const matching=publishedArticles().filter(a=>a.category===slug||(slug==='filmes'&&a.category==='series'));
+  if(!matching.length)continue;
+  const slot=section.querySelector('.editorial-empty')||section.appendChild(document.createElement('div'));
+  mountNewsFeed(slot,{items:matching,pageSize:3});
+ }
+}
 if(location.pathname.startsWith('/noticias/')){
  let slug;try{slug=decodeURIComponent(location.pathname.slice('/noticias/'.length))}catch{slug=''}
  renderArticle(app,slug);
