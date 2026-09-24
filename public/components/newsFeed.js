@@ -1,6 +1,6 @@
 import {articles} from '../data/articles.js';
 export const newsTopics=['Games','Nintendo','PlayStation','Xbox','PC','Hardware','Tecnologia','Cinema e Séries'];
-export const categoryLabels={games:'Games',tecnologia:'Tecnologia',filmes:'Cinema e Séries',series:'Cinema e Séries'};
+export const categoryLabels={games:'Games',tecnologia:'Tecnologia',filmes:'Cinema e Séries',series:'Cinema e Séries',local:'Três Corações'};
 const normalized=s=>String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
 export const publishedArticles=()=>articles.filter(a=>a.status==='published').sort((a,b)=>new Date(b.publishedAt)-new Date(a.publishedAt));
 export const articleUrl=a=>'/noticias/'+encodeURIComponent(a.slug);
@@ -9,6 +9,7 @@ export function filterArticles({category,topic}={},items=publishedArticles()){
  const term=normalized(topic);return items.filter(a=>(!category||a.category===category)&&(!term||term==='ultimas noticias'||[...(a.tags||[]),categoryLabels[a.category],a.category].some(t=>normalized(t)===term)));
 }
 export function illustration(item){
+ if(item.illustration==='city')return 'data:image/svg+xml;charset=utf-8,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540"><rect width="960" height="540" fill="#181b1d"/><g fill="none" stroke="#ddd1b5" stroke-width="6"><path d="M80 385h800M150 385V245h130v140m50 0V185h160v200m60 0V230h140v155m45 0V285h85v100M140 245l75-65 75 65M550 230l70-70 70 70"/><path d="M365 225h30v30h-30zm70 0h30v30h-30zm-70 70h30v30h-30zm70 0h30v30h-30z"/></g><text x="60" y="65" fill="#ddd1b5" font-family="monospace" font-size="24">WJ FILES / TRÊS CORAÇÕES</text><text x="60" y="485" fill="#ddd1b5" font-family="monospace" font-size="20">ILUSTRAÇÃO EDITORIAL / NÃO É UMA FOTOGRAFIA</text></svg>');
  const colors={circuit:['#122529','#87d9b2','CIRCUITOS / IDEIAS'],cave:['#17221b','#c7b96d','MUNDOS / EXPLORAÇÃO'],detective:['#21212a','#d4c5ab','ARQUIVO / INVESTIGAÇÃO']};
  const [bg,fg,label]=colors[item.illustration]||colors.detective;
  const svg=`<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540"><rect width="960" height="540" fill="${bg}"/><g fill="none" stroke="${fg}" stroke-width="6"><path d="M80 100h200v80h120M880 440H690v-80H570M80 440h130v-60M880 100H730v80"/><rect x="370" y="160" width="220" height="180"/><path d="M410 210h140M410 250h90M410 290h120M420 130v30m60-30v30m60-30v30M420 340v30m60-30v30m60-30v30"/></g><g fill="${fg}"><rect x="80" y="80" width="18" height="18"/><rect x="862" y="422" width="18" height="18"/><text x="60" y="485" font-family="monospace" font-size="25">${label}</text><text x="60" y="54" font-family="monospace" font-size="20">WJ FILES / ILUSTRAÇÃO EDITORIAL</text></g></svg>`;

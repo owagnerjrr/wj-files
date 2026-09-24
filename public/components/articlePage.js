@@ -1,15 +1,17 @@
 import {publishedArticles,articleUrl,categoryLabels,formatDate,makeCover} from './newsFeed.js';
+import {isTresCoracoes} from '../services/localNewsService.js';
 const node=(tag,text,cls)=>{const el=document.createElement(tag);if(text)el.textContent=text;if(cls)el.className=cls;return el};
 const external=(text,url)=>{const a=node('a',text);a.href=url;a.target='_blank';a.rel='noopener noreferrer';return a};
 export function renderArticle(app,slug){
  const article=publishedArticles().find(a=>a.slug===slug);app.replaceChildren();const container=node('article',null,'portal-container article-page');app.append(container);
  const back=node('a','← Todas as notícias','article-back');back.href='/noticias';container.append(back);
  if(!article){document.title='Notícia não encontrada — WJ Files';container.append(node('h1','Notícia não encontrada'),node('p','Esta publicação não está disponível.'));return}
+ if(isTresCoracoes(article)){back.href='/tres-coracoes';back.textContent='← Notícias de Três Corações'}
  document.title=article.title+' — WJ Files';document.querySelector('meta[name="description"]').content=article.subtitle;
  const header=node('header',null,'article-heading');header.append(node('span',categoryLabels[article.category]||article.category,'category-label'),node('h1',article.title),node('p',article.subtitle,'article-deck'));
  const byline=node('p',article.author+' · Publicado no WJ Files em ','article-byline');const time=node('time',formatDate(article.publishedAt));time.dateTime=article.publishedAt;byline.append(time);header.append(byline);container.append(header);
  const figure=node('figure',null,'article-cover');const credit=node('figcaption');
- const fallback=()=>credit.replaceChildren(node('span','Ilustração editorial original WJ Files. Não é uma captura do jogo ou produto.'));
+ const fallback=()=>credit.replaceChildren(node('span',isTresCoracoes(article)?'Ilustração editorial original WJ Files. Não é uma fotografia da cidade.':'Ilustração editorial original WJ Files. Não é uma captura do jogo ou produto.'));
  if(article.coverImage&&article.imageCredit)credit.append(external(article.imageCredit.text,article.imageCredit.url));else fallback();
  figure.append(makeCover(article,{priority:true,onFallback:fallback}),credit);container.append(figure);
  const body=node('div',null,'article-body');for(const block of article.content){const section=node('section');if(block.heading)section.append(node('h2',block.heading));section.append(node('p',block.text));body.append(section)}container.append(body);
