@@ -32,12 +32,14 @@ test('matérias têm fontes, datas válidas e identidade única por aconteciment
  for(const a of articles){assert.match(a.slug,/^[a-z0-9]+(?:-[a-z0-9]+)*$/);assert.ok(a.content.length>=4);assert.ok(Number.isFinite(Date.parse(a.publishedAt)));assert.ok(a.sources.length);for(const s of a.sources){assert.equal(new URL(s.url).protocol,'https:');assert.ok(s.title&&s.name);if(s.publishedAt)assert.ok(new Date(s.publishedAt)<=new Date(a.publishedAt))}if(a.coverImage)assert.ok(a.imageCredit?.url);for(const v of a.videos){assert.match(v.youtubeId,/^[\w-]{11}$/);assert.equal(new URL(v.sourceUrl).protocol,'https:')}for(const slug of a.relatedContent)assert.ok(articles.some(b=>b.slug===slug));assert.ok(articleUrl(a).startsWith('/noticias/'))}
 });
 test('filtros combinam editoria e assunto sem ocultar a opção todas',()=>{
- assert.equal(filterArticles({topic:'Últimas notícias'}).length,3);
- assert.equal(filterArticles({topic:'Nintendo'}).length,2);
- assert.equal(filterArticles({topic:'PlayStation'}).length,1);
- assert.equal(filterArticles({topic:'Xbox'}).length,1);
- assert.equal(filterArticles({topic:'Hardware'}).length,1);
- assert.equal(filterArticles({category:'games',topic:'Hardware'}).length,0);
- assert.equal(filterArticles({topic:'Cinema e Séries'}).length,0);
+ const items=[{category:'games',tags:['Nintendo']},{category:'games',tags:['Nintendo','PlayStation','Xbox']},{category:'tecnologia',tags:['Hardware']}];
+ const filter=options=>filterArticles(options,items);
+ assert.equal(filter({topic:'Últimas notícias'}).length,3);
+ assert.equal(filter({topic:'Nintendo'}).length,2);
+ assert.equal(filter({topic:'PlayStation'}).length,1);
+ assert.equal(filter({topic:'Xbox'}).length,1);
+ assert.equal(filter({topic:'Hardware'}).length,1);
+ assert.equal(filter({category:'games',topic:'Hardware'}).length,0);
+ assert.equal(filter({topic:'Cinema e Séries'}).length,0);
  assert.deepEqual(publishedArticles().map(a=>a.publishedAt),publishedArticles().map(a=>a.publishedAt).sort().reverse());
 });

@@ -1,5 +1,7 @@
 # Notícias — cadastro e revisão editorial
 
+Para matérias de Três Corações, consulte `EDITORIAL.md`: criação de rascunhos privados, revisão e exportação para o cadastro público. O módulo `articles.js` também reúne essas publicações, mantendo as mesmas páginas internas e fontes.
+
 ## Destaques da Home
 
 `featuredType` aceita `primary`, `secondary` e `none`. Use no máximo um principal publicado; os testes impedem publicar um cadastro ambíguo. O principal e até dois secundários usam os cards internos, com capa, categoria, resumo e data. Registros antigos sem o campo continuam elegíveis como fallback pela data; `none` exclui explicitamente dos destaques. Sem matérias elegíveis, o especial Zelda permanece como apresentação inicial. Rascunhos e rejeitados não entram na seleção. Não armazene conteúdo confidencial em `public`: o filtro visual não o torna privado.
