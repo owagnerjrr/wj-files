@@ -1,5 +1,7 @@
 // Cadastro manual; datas da redação e das fontes são distintas.
+import {localPublishedArticles} from './localArticles.js';
 export const articles = [
+ ...localPublishedArticles,
  {
  slug:'esp32-agenda-nextcloud',storyKey:'esp32-nextcloud-desktop-calendar',featuredType:'secondary',
  title:'Uma agenda de mesa com ESP32 coloca os compromissos fora do celular',
