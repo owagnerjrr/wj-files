@@ -7,8 +7,70 @@ const projects={
 "livraria-erp":{name:"ERP de Livraria",category:"Gestão comercial",summary:"Projeto de sistema para reunir processos administrativos e comerciais de livrarias.",problem:"Vendas, estoque e rotinas administrativas precisam de informações integradas.",features:["Estrutura para operações de venda","Organização de produtos e estoque","Gestão de processos administrativos"],benefit:"Centralização de processos em uma solução digital.",url:"https://livrariaerp.vercel.app/"}};
 const images={"monica-ribeiro":"monica","gestao-frota":"frota","missao-ti":"missao-ti","controle-producao":"controle-producao","painel-salas":"painel-salas","livraria-erp":"caramelo-erp"};
 const protectedProjects=new Set(["gestao-frota","controle-producao","painel-salas","livraria-erp"]);
+
+// Conteúdo editorial de cada estudo de caso. Sem métricas ou depoimentos não comprovados.
+const caseStudies={
+"monica-ribeiro":{
+context:"Uma presença digital própria ajuda a organizar a apresentação dos serviços e a oferecer um endereço único para divulgação.",
+applied:["Estruturação das informações em uma página de apresentação profissional","Organização visual para facilitar a leitura e a navegação","Layout adaptável para celulares e computadores","Publicação em endereço acessível pelo navegador"],
+usage:"O site funciona como uma vitrine digital: pode ser compartilhado em mensagens, redes sociais e materiais de divulgação para que interessados conheçam os serviços.",
+benefits:["Apresentação mais organizada e profissional","Facilidade para compartilhar um único link","Consulta das informações em diferentes dispositivos"],
+quality:["Leitura clara e hierarquia visual","Navegação simples e responsiva","Conteúdo acessível sem instalação de aplicativo"],
+status:"Site publicado. O volume de acessos e os resultados comerciais não foram informados."
+},
+"gestao-frota":{
+context:"O agendamento de veículos exige uma visão comum dos horários, dos solicitantes e da aprovação das reservas para reduzir conflitos e retrabalho.",
+applied:["Calendário com seleção do veículo e da data","Registro de destino, objetivo, horários e quantidade de ocupantes","Verificação de sobreposição de reservas","Fluxo de solicitação e aprovação pelas responsáveis","Identificação visual de solicitações pendentes e aprovadas","Ajustes para utilização em computador e celular"],
+usage:"Foi desenvolvido para apoiar o fluxo de solicitação de veículos: o colaborador consulta o calendário, solicita um horário e as responsáveis analisam a reserva. O sistema passou por ajustes e testes para uso piloto.",
+benefits:["Consulta mais rápida da programação","Menor risco de duas reservas no mesmo horário","Informações da solicitação reunidas em um só lugar","Mais clareza sobre o andamento de cada pedido"],
+quality:["Validação de horários e conflitos","Bloqueio de datas e horários passados","Diferenciação visual dos estados da reserva","Correções iterativas com base nos testes de uso"],
+status:"Sistema preparado e ajustado para uso piloto; não há métricas públicas de economia de tempo."
+},
+"missao-ti":{
+context:"Apresentar carreiras em tecnologia a estudantes pode ser mais envolvente quando a turma participa, em vez de apenas assistir a slides.",
+applied:["Experiência interativa acessada pelo navegador","Entrada por QR code para participação dos estudantes","Dinâmica de perguntas e classificação em tempo real","Interface pensada para uso em celulares e redes móveis","Conteúdo relacionado a profissões, cursos e oportunidades em TI"],
+usage:"Pode ser utilizado durante palestras e atividades educacionais: os estudantes entram pelo celular e participam da dinâmica enquanto acompanham a apresentação.",
+benefits:["Participação mais ativa da turma","Formato de aprendizagem mais dinâmico","Acesso sem necessidade de instalar aplicativo","Possibilidade de acompanhar a classificação durante a atividade"],
+quality:["Atenção à legibilidade das telas","Acesso simplificado por QR code","Adaptação a dispositivos móveis","Revisões de interface e experiência de participação"],
+status:"Experiência publicada para apresentação e testes; não foram informados indicadores quantitativos de participação."
+},
+"controle-producao":{
+context:"O acompanhamento de produtos e quantidades em várias lojas fica mais trabalhoso quando as atualizações não estão centralizadas e disponíveis em diferentes aparelhos.",
+applied:["Separação dos produtos por categorias personalizáveis","Cadastro e organização de itens","Controle de quantidades por loja","Sincronização das alterações entre computador e celular","Ação de zerar quantidades restrita à loja selecionada","Ajustes de tamanho de campos e interação em telas pequenas","Disponibilização como aplicação web instalável (PWA)"],
+usage:"A ferramenta foi ajustada para uma rotina com quatro lojas, permitindo registrar e consultar quantidades no celular e no computador. Foram corrigidos problemas de sincronização e de interação relatados durante os testes.",
+benefits:["Conferência de quantidades em um só ambiente","Menos dependência de controles separados por aparelho","Organização por loja e categoria","Atualização mais prática durante a operação"],
+quality:["Verificação da sincronização entre dispositivos","Correção de botões e campos que não respondiam","Proteção contra zerar a loja errada","Ajustes de usabilidade em celular e computador"],
+status:"Ferramenta funcional após correções relatadas nos testes; não há números confirmados de produtividade."
+},
+"painel-salas":{
+context:"Sem um painel compartilhado, verificar a ocupação das salas e coordenar agendamentos pode exigir consultas manuais e mensagens entre setores.",
+applied:["Painel público com indicação de salas livres e ocupadas","Visualização dos horários atuais e próximos","Área administrativa para agendamento e manutenção das reservas","Registro de bloqueios para manutenção e outras atividades","Possibilidade de agendar vários dias e ajustar horários em intervalos de cinco minutos","Tratamento de finais de semana, feriados e datas passadas","Atualização das informações para consulta compartilhada"],
+usage:"O painel foi colocado em uso na unidade para consultar a ocupação das salas e apoiar a organização dos agendamentos. A operação gerou pedidos de melhoria que foram incorporados ao sistema.",
+benefits:["Consulta rápida da disponibilidade","Maior visibilidade da utilização dos ambientes","Menos necessidade de perguntar presencialmente sobre horários","Organização de reservas, alterações e bloqueios"],
+quality:["Atenção ao horário de Brasília","Tratamento de reservas passadas e datas especiais","Ajustes de interface para leitura rápida","Evolução contínua a partir do retorno de quem utiliza"],
+status:"Painel em uso na rotina, com melhorias realizadas ao longo da operação; não há métricas auditadas de economia de tempo."
+},
+"livraria-erp":{
+context:"Uma operação de livrarias com diferentes unidades precisa conciliar vendas, estoque, recebimentos e movimentações de produtos sem perder a rastreabilidade.",
+applied:["Estrutura de cadastro de produtos, clientes e unidades","Fluxos de vendas e diferentes meios de pagamento","Controle de estoque por unidade e leitura por código de barras","Movimentações e transferências entre unidades e eventos","Regras de vale-crédito, cancelamentos e restauração de saldos","Relatórios e indicadores de vendas e estoque","Validações e registros de auditoria nas operações críticas"],
+usage:"O projeto está em desenvolvimento e validação. Os fluxos são organizados para representar a rotina de uma operação com múltiplas unidades; não é apresentado aqui como implantação comercial concluída.",
+benefits:["Potencial de centralizar informações comerciais","Mais rastreabilidade de movimentações e cancelamentos","Base para acompanhar estoque e vendas por unidade","Redução potencial de controles manuais duplicados"],
+quality:["Testes automatizados em regras importantes","Validação de permissões, saldos e operações repetidas","Cuidados com consistência das movimentações","Auditoria e tratamento de situações de erro"],
+status:"Projeto em desenvolvimento e testes; os benefícios operacionais ainda dependem da implantação e validação em uso real."
+}
+};
+const renderItems=items=>'<ul>'+items.map(item=>'<li>'+escapeHTML(item)+'</li>').join('')+'</ul>';
+const renderCaseStudy=(key)=>{
+ const c=caseStudies[key];if(!c)return '';
+ return '<section class="case-study">'+
+ '<div class="panel"><div class="tag">Visão do projeto</div><h2>Por que essa solução foi criada?</h2><p>'+escapeHTML(c.context)+'</p><h2>O que foi aplicado</h2>'+renderItems(c.applied)+'</div>'+
+ '<div class="panel"><div class="tag">Aplicação prática</div><h2>Como é utilizado na rotina</h2><p>'+escapeHTML(c.usage)+'</p><h2>Benefícios para o trabalho</h2>'+renderItems(c.benefits)+'</div>'+
+ '<div class="panel"><div class="tag">Qualidade e evolução</div><h2>Cuidados com a qualidade</h2>'+renderItems(c.quality)+'<h2>Situação do projeto</h2><p>'+escapeHTML(c.status)+'</p></div>'+
+ '</section>';
+};
+
 const escapeHTML=value=>String(value).replace(/[&<>"']/g,char=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[char]));
 const key=new URLSearchParams(location.search).get("id");const p=Object.hasOwn(projects,key)?projects[key]:null;
 const root=document.getElementById("content");
 if(!p){document.title="Projeto não encontrado | WJ Tecnologia";root.innerHTML='<h1>Projeto não encontrado</h1><p>Confira os projetos disponíveis no portfólio.</p><a class="btn" href="/portfolio.html#projetos">Ver portfólio</a>';}
-else{document.title=p.name+" | WJ Tecnologia";root.innerHTML=`<div class="tag">${escapeHTML(p.category)}</div><h1>${escapeHTML(p.name)}</h1><p class="lead">${escapeHTML(p.summary)}</p>${protectedProjects.has(key)?'<span class="note">Demonstração visual do projeto • identidade do cliente preservada</span>':`<div class="project-access"><p>Quer conhecer o projeto ${escapeHTML(p.name)}? Acesse o site pelo link abaixo:</p><a class="btn" href="${p.url}" target="_blank" rel="noopener noreferrer">Acessar site de ${escapeHTML(p.name)} ↗</a><p class="note"><a href="${p.url}" target="_blank" rel="noopener noreferrer">${escapeHTML(p.url)}</a></p></div>`}<a class="btn secondary" href="/portfolio.html#projetos">Ver outros projetos</a><div class="grid"><div><section class="panel"><h2>O desafio</h2><p>${escapeHTML(p.problem)}</p><h2>Funcionalidades apresentadas</h2><ul>${p.features.map(f=>`<li>${escapeHTML(f)}</li>`).join("")}</ul><h2>Benefícios</h2><p>${escapeHTML(p.benefit)}</p></section></div><div><div class="visual"><div><div class="${protectedProjects.has(key)?"private-detail-image":""}"><img src="/assets/portfolio/${images[key]}.webp" alt="Captura real da interface de ${escapeHTML(p.name)}" style="width:100%;max-width:100%;border-radius:12px;object-fit:contain" loading="lazy"></div><p class="note">Captura da interface em 17/10/2026.</p></div></div><p class="note">O link externo abre o sistema original. Algumas áreas podem exigir autorização ou login. Nenhuma informação interna é exibida nesta página.</p></div></div>`;}
+else{document.title=p.name+" | WJ Tecnologia";root.innerHTML=`<div class="tag">${escapeHTML(p.category)}</div><h1>${escapeHTML(p.name)}</h1><p class="lead">${escapeHTML(p.summary)}</p>${protectedProjects.has(key)?'<span class="note">Demonstração visual do projeto • identidade do cliente preservada</span>':`<div class="project-access"><p>Quer conhecer o projeto ${escapeHTML(p.name)}? Acesse o site pelo link abaixo:</p><a class="btn" href="${p.url}" target="_blank" rel="noopener noreferrer">Acessar site de ${escapeHTML(p.name)} ↗</a><p class="note"><a href="${p.url}" target="_blank" rel="noopener noreferrer">${escapeHTML(p.url)}</a></p></div>`}<a class="btn secondary" href="/portfolio.html#projetos">Ver outros projetos</a><div class="grid"><div><section class="panel"><h2>O desafio</h2><p>${escapeHTML(p.problem)}</p><h2>Funcionalidades apresentadas</h2><ul>${p.features.map(f=>`<li>${escapeHTML(f)}</li>`).join("")}</ul><h2>Benefícios</h2><p>${escapeHTML(p.benefit)}</p></section></div><div><div class="visual"><div><div class="${protectedProjects.has(key)?"private-detail-image":""}"><img src="/assets/portfolio/${images[key]}.webp" alt="Captura real da interface de ${escapeHTML(p.name)}" style="width:100%;max-width:100%;border-radius:12px;object-fit:contain" loading="lazy"></div><p class="note">Captura da interface em 17/10/2026.</p></div></div><p class="note">O link externo abre o sistema original. Algumas áreas podem exigir autorização ou login. Nenhuma informação interna é exibida nesta página.</p></div></div>${renderCaseStudy(key)}`;}
