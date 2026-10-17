@@ -1,4 +1,4 @@
-import {readdir,readFile,mkdir,cp} from 'node:fs/promises';
+import {readdir,readFile,mkdir,cp,copyFile} from 'node:fs/promises';
 import {execFileSync} from 'node:child_process';
 import path from 'node:path';
 import {localPublishedArticles} from './public/data/localArticles.js';
@@ -16,4 +16,6 @@ for(const file of files.filter(f=>f.endsWith('.js')))execFileSync(process.execPa
 const html=await readFile('public/index.html','utf8');
 for(const [,asset] of html.matchAll(/(?:src|href)="(\/[^"#]+\.(?:js|css))"/g))await readFile('public'+asset);
 await mkdir('dist',{recursive:true});await cp('public','dist',{recursive:true});
+// O domínio principal deve abrir WJ Tecnologia; o portal legado permanece apenas como arquivo de origem.
+await copyFile('public/portfolio.html','dist/index.html');
 console.log(`Build concluído: ${files.length} arquivos em dist/.`);
