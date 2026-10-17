@@ -6,7 +6,7 @@ const projects={
 "painel-salas":{name:"Painel de Salas",category:"Gestão de espaços",summary:"Painel para consultar a utilização e organizar o agendamento de salas.",problem:"Sem uma visão compartilhada, consultar a disponibilidade de espaços pode tomar tempo.",features:["Consulta da ocupação das salas","Visualização de horários e agendamentos","Organização de reservas e bloqueios"],benefit:"Mais clareza sobre a utilização dos ambientes.",url:"https://painel-salas-senac-tc.vercel.app/"},
 "livraria-erp":{name:"ERP de Livraria",category:"Gestão comercial",summary:"Projeto de sistema para reunir processos administrativos e comerciais de livrarias.",problem:"Vendas, estoque e rotinas administrativas precisam de informações integradas.",features:["Estrutura para operações de venda","Organização de produtos e estoque","Gestão de processos administrativos"],benefit:"Centralização de processos em uma solução digital.",url:"https://livrariaerp.vercel.app/"}};
 const images={"monica-ribeiro":"monica","gestao-frota":"frota","missao-ti":"missao-ti","controle-producao":"controle-producao","painel-salas":"painel-salas","livraria-erp":"caramelo-erp"};
-const protectedProjects=new Set(["gestao-frota","missao-ti","controle-producao","painel-salas","livraria-erp"]);
+const protectedProjects=new Set(["gestao-frota","controle-producao","painel-salas","livraria-erp"]);
 const escapeHTML=value=>String(value).replace(/[&<>"']/g,char=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[char]));
 const key=new URLSearchParams(location.search).get("id");const p=Object.hasOwn(projects,key)?projects[key]:null;
 const root=document.getElementById("content");
