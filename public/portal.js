@@ -2,7 +2,7 @@ import {installCalendar,mountCalendar} from './components/calendar.js';
 import {getEvents,normalize} from './services/calendarService.js';
 import {mountHomeHighlights} from './components/homeHighlights.js';
 import {renderLocalPage} from './components/localPage.js';
-const categories=[['noticias','Notícias'],['games','Games'],['filmes','Filmes'],['series','Séries'],['tecnologia','Tecnologia'],['misterios','Mistérios'],['videos','Vídeos'],['projetos','Projetos']];
+const categories=[['noticias','Notícias'],['games','Games'],['filmes','Filmes'],['series','Séries'],['tecnologia','Tecnologia'],['misterios','Mistérios'],['videos','Vídeos'],['projetos','Projetos'],['portfolio.html','WJ Tecnologia']];
 const topics=['Últimas notícias','Nintendo','PlayStation','Xbox','PC','Cinema','Streaming','IA','UFO'];
 const subcategories={games:['Nintendo','PlayStation','Xbox','PC','Retro','Indies'],filmes:['Cinema','Streaming'],series:['Streaming','Temporadas'],tecnologia:['IA','Programação','Hardware'],misterios:['UFO','História','Investigações'],videos:['Trailers','Vídeos'],projetos:['Sites','Experimentos']};
 const logo='<span class="portal-logo" role="img" aria-label="WJ Files — Explorando o desconhecido"></span>';
