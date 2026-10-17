@@ -40,6 +40,31 @@
 .private-preview:has(img[src$="/painel-salas.webp"])::after{display:block!important;left:0!important;top:0!important;width:22%!important;height:15%!important}
 .private-preview:has(img[src$="/caramelo-erp.webp"])::after{display:block!important;left:0!important;top:0!important;width:22%!important;height:16%!important}
 
+
+/* Detalhes tecnológicos discretos nas margens laterais, sem cobrir o conteúdo. */
+@media(min-width:1300px){
+  main>.wrap>section{position:relative;isolation:isolate}
+  main>.wrap>section::before,main>.wrap>section::after{
+    position:absolute;top:50%;transform:translateY(-50%);width:64px;height:64px;
+    display:grid;place-items:center;border:1px solid #2acaff34;border-radius:19px;
+    background:linear-gradient(145deg,#12304b66,#0b15274d);
+    box-shadow:0 0 30px #06cfff0c,inset 0 0 24px #27b9ff0a;
+    color:#4dcfffa1;font:300 33px/1 ui-monospace,monospace;
+    pointer-events:none;user-select:none;z-index:-1
+  }
+  main>.wrap>section::before{content:"</>";left:max(-100px,calc((1180px - 100vw)/2 + 25px))}
+  main>.wrap>section::after{content:"{ }";right:max(-100px,calc((1180px - 100vw)/2 + 25px));font-size:25px}
+  #como-trabalho::before{content:"⚙"}
+  #como-trabalho::after{content:"01"}
+  #servicos::before{content:"⌘"}
+  #servicos::after{content:"↗"}
+  #contato::before{content:"✦"}
+  #contato::after{content:"@";font-size:30px}
+}
+@media(prefers-reduced-motion:no-preference){
+  @media(min-width:1300px){main>.wrap>section::before,main>.wrap>section::after{transition:border-color .25s,box-shadow .25s}main>.wrap>section:hover::before,main>.wrap>section:hover::after{border-color:#42cfff66;box-shadow:0 0 34px #07cfff20}}
+}
+
 </style></head><body>
 <header class="top"><div class="wrap"><a class="brand" href="/portfolio.html" aria-label="WJ Tecnologia início"><b>WJ</b> TECNOLOGIA<small>DESENVOLVIMENTO • SISTEMAS • AUTOMAÇÕES</small></a><nav class="nav" aria-label="Navegação principal"><a href="#projetos">Projetos</a><a href="#servicos">Serviços</a><a href="#contato">Contato</a></nav></div></header>
 <main><div class="wrap"><div class="hero"><div class="hero-copy"><div class="eyebrow hero-label"><span class="signal"></span>Tecnologia aplicada a problemas reais</div><h1>Você precisa <span>automatizar</span> seu trabalho?</h1><h2 class="hero-promise">Acredito que posso <em>te ajudar.</em></h2><p>Na WJ Tecnologia, desenvolvemos sistemas, automações e soluções digitais para simplificar rotinas, economizar tempo e trazer mais organização ao seu negócio.</p><div class="actions"><a class="btn" href="mailto:owagnerjr@gmail.com?subject=Minha%20ideia%20de%20projeto%20-%20WJ%20Tecnologia&body=Ol%C3%A1%21%20Gostaria%20de%20conversar%20sobre%20a%20seguinte%20ideia%3A%0A%0A">Me mande sua ideia ↗</a><a class="btn secondary" href="#projetos">Ver soluções realizadas →</a></div><div class="hero-benefits"><span>⚡ Mais eficiência</span><span>◷ Menos tempo gasto</span><span>⌘ Processos automatizados</span></div></div><div class="hero-visual"><img class="hero-art" src="/assets/wj-tecnologia-hero.webp" width="995" height="745" alt="WJ Tecnologia em cenário futurista azul e violeta, com painéis de automação, sistemas, ideias e suporte" fetchpriority="high" decoding="async"></div></div>
