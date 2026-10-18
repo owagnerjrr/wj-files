@@ -43,7 +43,7 @@ function setupContact(config) {
     }
     const mobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
     const endpoint = mobile
-      ? 'https://wa.me/5535991742614?text='
+      ? 'https://api.whatsapp.com/send?phone=5535991742614&text='
       : 'https://web.whatsapp.com/send?phone=5535991742614&text=';
     window.location.assign(endpoint + encodeURIComponent(message));
   });
