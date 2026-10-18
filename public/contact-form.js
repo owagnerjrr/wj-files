@@ -24,7 +24,11 @@
       '',
       '🚀 Podemos conversar sobre como tirar essa ideia do papel?',
     ].join('\n');
-    window.location.assign(`https://wa.me/5535991742614?text=${encodeURIComponent(message)}`);
+    const mobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+    const endpoint = mobile
+      ? 'https://wa.me/5535991742614?text='
+      : 'https://web.whatsapp.com/send?phone=5535991742614&text=';
+    window.location.assign(endpoint + encodeURIComponent(message));
   });
   let previousFocus;
   const open = trigger => {
