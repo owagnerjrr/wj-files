@@ -25,6 +25,54 @@
       "destination": "/dicas/como-formatar-computador.html"
     },
     {
+      "source": "/dicas/computador-lento-o-que-fazer",
+      "destination": "/dicas/computador-lento-o-que-fazer.html"
+    },
+    {
+      "source": "/dicas/computador-lento-o-que-fazer/",
+      "destination": "/dicas/computador-lento-o-que-fazer.html"
+    },
+    {
+      "source": "/dicas/como-fazer-backup",
+      "destination": "/dicas/como-fazer-backup.html"
+    },
+    {
+      "source": "/dicas/como-fazer-backup/",
+      "destination": "/dicas/como-fazer-backup.html"
+    },
+    {
+      "source": "/dicas/wifi-conectado-sem-internet",
+      "destination": "/dicas/wifi-conectado-sem-internet.html"
+    },
+    {
+      "source": "/dicas/wifi-conectado-sem-internet/",
+      "destination": "/dicas/wifi-conectado-sem-internet.html"
+    },
+    {
+      "source": "/dicas/como-identificar-golpes",
+      "destination": "/dicas/como-identificar-golpes.html"
+    },
+    {
+      "source": "/dicas/como-identificar-golpes/",
+      "destination": "/dicas/como-identificar-golpes.html"
+    },
+    {
+      "source": "/dicas/ssd-ou-memoria-ram",
+      "destination": "/dicas/ssd-ou-memoria-ram.html"
+    },
+    {
+      "source": "/dicas/ssd-ou-memoria-ram/",
+      "destination": "/dicas/ssd-ou-memoria-ram.html"
+    },
+    {
+      "source": "/dicas/atalhos-uteis-windows",
+      "destination": "/dicas/atalhos-uteis-windows.html"
+    },
+    {
+      "source": "/dicas/atalhos-uteis-windows/",
+      "destination": "/dicas/atalhos-uteis-windows.html"
+    },
+    {
       "source": "/tres-coracoes",
       "destination": "/index.html"
     },

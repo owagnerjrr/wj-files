@@ -1,4 +1,35 @@
 (() => {
+
+  const filters = document.getElementById('tips-filters');
+  if (filters) {
+    const search = document.getElementById('tips-search');
+    const category = document.getElementById('tips-category');
+    const level = document.getElementById('tips-level');
+    const count = document.getElementById('tips-result-count');
+    const empty = document.getElementById('tips-empty');
+    const cards = [...document.querySelectorAll('[data-tip-card]')];
+    const normalize = value => value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLocaleLowerCase('pt-BR').replace(/[-‐‑–—]/g, '');
+    const entries = cards.map(card => ({ card, text: normalize(card.dataset.search || '') }));
+    const update = () => {
+      const terms = normalize(search.value.trim()).split(/\s+/).filter(Boolean);
+      let visible = 0;
+      for (const {card, text} of entries) {
+        const match = terms.every(term => text.includes(term)) && (!category.value || card.dataset.category === category.value) && (!level.value || card.dataset.level === level.value);
+        card.hidden = !match;
+        if (match) visible++;
+      }
+      count.textContent = `${visible} ${visible === 1 ? 'guia encontrado' : 'guias encontrados'} de ${cards.length}.`;
+      empty.hidden = visible !== 0;
+    };
+    filters.hidden = false;
+    filters.addEventListener('submit', event => event.preventDefault());
+    filters.addEventListener('input', update);
+    filters.addEventListener('change', update);
+    filters.addEventListener('reset', () => requestAnimationFrame(update));
+    document.getElementById('tips-clear').addEventListener('click', () => { filters.reset(); search.focus(); });
+    update();
+  }
+
   const fill = document.getElementById('reading-fill');
   const content = document.querySelector('.guide-content');
   if (fill && content) {
