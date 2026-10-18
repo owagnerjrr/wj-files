@@ -15,11 +15,11 @@
     if (!form.reportValidity()) return;
     const message = [
       'Olá, Wagner! 👋',
-      '💻 Vim pelo site *WJ Tecnologia* e gostaria de conversar sobre uma ideia.',
+      '💻 Vim pelo site WJ Tecnologia e gostaria de conversar sobre uma ideia.',
       '',
-      `⚙️ *O que preciso:* ${need.value}`,
+      `⚙️ O que preciso: ${need.value}`,
       '',
-      '💡 *Minha ideia:*',
+      '💡 Minha ideia:',
       description,
       '',
       '🚀 Podemos conversar sobre como tirar essa ideia do papel?',
