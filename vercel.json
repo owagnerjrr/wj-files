@@ -9,6 +9,22 @@
       "destination": "/portfolio.html"
     },
     {
+      "source": "/dicas",
+      "destination": "/dicas.html"
+    },
+    {
+      "source": "/dicas/",
+      "destination": "/dicas.html"
+    },
+    {
+      "source": "/dicas/como-formatar-computador",
+      "destination": "/dicas/como-formatar-computador.html"
+    },
+    {
+      "source": "/dicas/como-formatar-computador/",
+      "destination": "/dicas/como-formatar-computador.html"
+    },
+    {
       "source": "/tres-coracoes",
       "destination": "/index.html"
     },
