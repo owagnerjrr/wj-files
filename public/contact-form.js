@@ -14,10 +14,15 @@
     idea.setCustomValidity(description ? '' : 'Conte sua ideia em poucas palavras.');
     if (!form.reportValidity()) return;
     const message = [
-      'Olá! Vim pelo site WJ Tecnologia.',
+      'Olá, Wagner! 👋',
+      '💻 Vim pelo site *WJ Tecnologia* e gostaria de conversar sobre uma ideia.',
       '',
-      `Preciso de: ${need.value}`,
-      `Minha ideia: ${description}`,
+      `⚙️ *O que preciso:* ${need.value}`,
+      '',
+      '💡 *Minha ideia:*',
+      description,
+      '',
+      '🚀 Podemos conversar sobre como tirar essa ideia do papel?',
     ].join('\n');
     window.location.assign(`https://wa.me/5535991742614?text=${encodeURIComponent(message)}`);
   });
