@@ -34,6 +34,13 @@ function setupContact(config) {
       '',
       '🚀 Podemos conversar sobre como tirar essa ideia do papel?',
     ].join('\n');
+    if (event.submitter?.value === 'email') {
+      const subject = config.partnership
+        ? 'Proposta de parceria - WJ Tecnologia'
+        : 'Minha ideia de projeto - WJ Tecnologia';
+      window.location.assign(`mailto:owagnerjr@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message.replace(/\n/g, '\r\n'))}`);
+      return;
+    }
     const mobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
     const endpoint = mobile
       ? 'https://wa.me/5535991742614?text='
