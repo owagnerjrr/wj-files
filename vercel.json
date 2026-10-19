@@ -4,10 +4,113 @@
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "rewrites": [
-    { "source": "/tres-coracoes", "destination": "/index.html" },
-    { "source": "/tres-coracoes/", "destination": "/index.html" },
-    { "source": "/zelda", "destination": "/index.html" },
-    { "source": "/noticias/:path*", "destination": "/index.html" },
-    { "source": "/:page(games|filmes|series|tecnologia|misterios|videos|projetos|calendario|sobre|contato|privacidade)", "destination": "/index.html" }
+    {
+      "source": "/",
+      "destination": "/portfolio.html"
+    },
+    {
+      "source": "/ferramentas/pdf",
+      "destination": "/pdf.html"
+    },
+    {
+      "source": "/ferramentas/pdf/",
+      "destination": "/pdf.html"
+    },
+    {
+      "source": "/ferramentas",
+      "destination": "/ferramentas.html"
+    },
+    {
+      "source": "/ferramentas/",
+      "destination": "/ferramentas.html"
+    },
+    {
+      "source": "/s/:code",
+      "destination": "/api/redirect?code=:code"
+    },
+    {
+      "source": "/dicas",
+      "destination": "/dicas.html"
+    },
+    {
+      "source": "/dicas/",
+      "destination": "/dicas.html"
+    },
+    {
+      "source": "/dicas/como-formatar-computador",
+      "destination": "/dicas/como-formatar-computador.html"
+    },
+    {
+      "source": "/dicas/como-formatar-computador/",
+      "destination": "/dicas/como-formatar-computador.html"
+    },
+    {
+      "source": "/dicas/computador-lento-o-que-fazer",
+      "destination": "/dicas/computador-lento-o-que-fazer.html"
+    },
+    {
+      "source": "/dicas/computador-lento-o-que-fazer/",
+      "destination": "/dicas/computador-lento-o-que-fazer.html"
+    },
+    {
+      "source": "/dicas/como-fazer-backup",
+      "destination": "/dicas/como-fazer-backup.html"
+    },
+    {
+      "source": "/dicas/como-fazer-backup/",
+      "destination": "/dicas/como-fazer-backup.html"
+    },
+    {
+      "source": "/dicas/wifi-conectado-sem-internet",
+      "destination": "/dicas/wifi-conectado-sem-internet.html"
+    },
+    {
+      "source": "/dicas/wifi-conectado-sem-internet/",
+      "destination": "/dicas/wifi-conectado-sem-internet.html"
+    },
+    {
+      "source": "/dicas/como-identificar-golpes",
+      "destination": "/dicas/como-identificar-golpes.html"
+    },
+    {
+      "source": "/dicas/como-identificar-golpes/",
+      "destination": "/dicas/como-identificar-golpes.html"
+    },
+    {
+      "source": "/dicas/ssd-ou-memoria-ram",
+      "destination": "/dicas/ssd-ou-memoria-ram.html"
+    },
+    {
+      "source": "/dicas/ssd-ou-memoria-ram/",
+      "destination": "/dicas/ssd-ou-memoria-ram.html"
+    },
+    {
+      "source": "/dicas/atalhos-uteis-windows",
+      "destination": "/dicas/atalhos-uteis-windows.html"
+    },
+    {
+      "source": "/dicas/atalhos-uteis-windows/",
+      "destination": "/dicas/atalhos-uteis-windows.html"
+    },
+    {
+      "source": "/tres-coracoes",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/tres-coracoes/",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/zelda",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/noticias/:path*",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/:page(games|filmes|series|tecnologia|misterios|videos|projetos|calendario|sobre|contato|privacidade)",
+      "destination": "/index.html"
+    }
   ]
 }
