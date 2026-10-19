@@ -9,6 +9,18 @@
       "destination": "/portfolio.html"
     },
     {
+      "source": "/ferramentas",
+      "destination": "/ferramentas.html"
+    },
+    {
+      "source": "/ferramentas/",
+      "destination": "/ferramentas.html"
+    },
+    {
+      "source": "/s/:code",
+      "destination": "/api/redirect?code=:code"
+    },
+    {
       "source": "/dicas",
       "destination": "/dicas.html"
     },

@@ -7,7 +7,15 @@
     "dev": "node server.mjs",
     "start": "node server.mjs",
     "build": "node build.mjs",
-    "test": "node --test calendar.test.mjs news.test.mjs editorial.test.mjs",
+    "test": "node --test calendar.test.mjs news.test.mjs editorial.test.mjs tools.test.mjs",
     "editorial": "node editorial/cli.mjs"
+  },
+  "dependencies": {
+    "@neondatabase/serverless": "^1.2.0",
+    "qrcode": "^1.5.4"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.12",
+    "jsqr": "^1.4.0"
   }
 }

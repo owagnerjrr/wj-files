@@ -1,3 +1,5 @@
+import shorten from './api/shorten.js';
+import redirect from './api/redirect.js';
 import http from 'node:http';
 import {readFile} from 'node:fs/promises';
 import path from 'node:path';
@@ -12,6 +14,7 @@ const types = {'.html':'text/html; charset=utf-8','.css':'text/css; charset=utf-
 const routes = new Map([
   ['/', '/portfolio.html'],
   ['/dicas', '/dicas.html'],
+  ['/ferramentas', '/ferramentas.html'],
   ['/dicas/como-formatar-computador', '/dicas/como-formatar-computador.html'],
 ]);
 for(const slug of tipsSlugs)routes.set(`/dicas/${slug}`, `/dicas/${slug}.html`);
@@ -19,6 +22,21 @@ http.createServer(async(req,res)=>{
   try {
     const route=decodeURIComponent(new URL(req.url,'http://localhost').pathname);
     const clean=route==='/'?route:route.replace(/\/$/,'');
+    if(clean==='/api/shorten' || clean==='/api/redirect' || clean.startsWith('/s/')) {
+      res.status=code=>{res.statusCode=code;return res;};
+      res.json=value=>{res.setHeader('Content-Type','application/json; charset=utf-8');res.end(JSON.stringify(value));return res;};
+      res.send=value=>{res.setHeader('Content-Type','text/plain; charset=utf-8');res.end(value);return res;};
+      const url=new URL(req.url,'http://localhost');
+      req.query=Object.fromEntries(url.searchParams);
+      if(clean.startsWith('/s/'))req.query.code=clean.slice(3);
+      if(clean==='/api/shorten') {
+        let body='';
+        for await(const chunk of req){body+=chunk;if(Buffer.byteLength(body)>8192)return res.status(413).json({error:'Envie um link menor.'});}
+        req.body=body;
+        return await shorten(req,res);
+      }
+      return await redirect(req,res);
+    }
     const mapped=routes.get(clean)||route;
     const target=path.resolve(root,'.'+mapped);
     if(target!==root && !target.startsWith(root+path.sep)){res.writeHead(403).end();return;}
