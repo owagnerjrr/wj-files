@@ -32,3 +32,18 @@ test('Word para PDF aceita apenas um pacote DOCX válido e mantém tabelas na fo
  await assert.rejects(inspectDocx(new Uint8Array([1,2,3])),/DOCX válido/);
  const bad=new JSZip();bad.file('qualquer.txt','Não é Word');await assert.rejects(inspectDocx(await bad.generateAsync({type:'uint8array'})),/documento Word/);
 });
+test('ferramentas externas apontam diretamente ao iLovePDF e funcionam como links nativos',async()=>{
+ const {readFile}=await import('node:fs/promises');
+ const external=pdfTools.filter(tool=>!tool.local);
+ assert.equal(external.length,19);
+ assert.equal(new Set(external.map(tool=>tool.externalUrl)).size,19);
+ const html=await readFile('public/pdf.html','utf8');
+ for(const tool of external){
+  const url=new URL(tool.externalUrl);assert.equal(url.origin,'https://www.ilovepdf.com');assert.ok(url.pathname.startsWith('/pt/'));
+  const card=html.match(new RegExp(`<a[^>]*data-pdf-tool="${tool.id}"[^>]*>`))?.[0];
+  assert.ok(card,`${tool.id}: deve ser um link`);assert.ok(card.includes(`href="${tool.externalUrl}"`));assert.ok(card.includes('target="_blank"'));assert.ok(card.includes('rel="noopener noreferrer"'));assert.ok(card.includes('abre em nova aba'));assert.ok(!card.includes('disabled'));
+ }
+ assert.deepEqual(pdfTools.slice(0,2).map(tool=>tool.id),['word-pdf','pdf-word']);
+ assert.ok(!html.includes('em preparação'));assert.ok(!html.includes('ativação do servidor'));
+ const client=await readFile('src/pdf-tools.js','utf8');assert.ok(!client.includes('/api/pdf-service'));assert.ok(!client.includes('window.open'));
+});

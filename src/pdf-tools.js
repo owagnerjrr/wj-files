@@ -3,13 +3,11 @@ import {pdfTools,getPdfTool} from '../public/pdf-catalog.js';
 import {processPdf} from './pdf-operations.js';
 import JSZip from 'jszip';
 const $=id=>document.getElementById(id),dialog=$('pdf-dialog'),form=$('pdf-form'),fileInput=$('pdf-files'),status=$('pdf-status'),result=$('pdf-result');
-let active,selectedFiles=[],downloadUrl,previousFocus,runId=0,server={available:false,aiAvailable:false};
+let active,selectedFiles=[],downloadUrl,previousFocus,runId=0;
 const normalize=value=>value.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
 function renderCatalog(){
  const term=normalize($('pdf-search').value),category=$('pdf-category').value;let visible=0;
  for(const card of document.querySelectorAll('[data-pdf-tool]')){const tool=getPdfTool(card.dataset.pdfTool);const match=(!category||tool.category===category)&&normalize(tool.title+' '+tool.description).includes(term);card.hidden=!match;if(match)visible++;
- const enabled=tool.local||(server.available&&(!tool.ai||server.aiAvailable));card.disabled=!enabled;card.setAttribute('aria-label',tool.title+(enabled?'':', em preparação'));
- card.querySelector('.pdf-mode').textContent=tool.local?'Pronto para usar':enabled?'Abrir ferramenta':tool.ai?'IA em preparação':'Servidor em preparação';
  }
  $('pdf-count').textContent=`${visible} ferramenta${visible===1?'':'s'} encontrada${visible===1?'':'s'}.`;
  $('pdf-empty').hidden=visible!==0;
@@ -36,11 +34,7 @@ function openLocal(tool,trigger){
  $('pdf-run').textContent=tool.word?'Preparar PDF':tool.id==='pdf-word'?'Converter para Word':tool.id==='split'||tool.id==='pdf-jpg'?'Gerar arquivo ZIP':tool.id==='markdown'?'Extrair texto':'Gerar PDF';
  renderFiles();dialog.showModal();document.documentElement.classList.add('pdf-modal-open');fileInput.focus();
 }
-for(const trigger of document.querySelectorAll('[data-pdf-tool]'))trigger.addEventListener('click',()=>{
- const tool=getPdfTool(trigger.dataset.pdfTool);if(tool.local){openLocal(tool,trigger);return;}
- if(!server.available||tool.ai&&!server.aiAvailable)return;
- const target=new URL(tool.path,server.baseUrl);window.open(target.href,'_blank','noopener,noreferrer');
-});
+for(const trigger of document.querySelectorAll('button[data-pdf-tool]'))trigger.addEventListener('click',()=>openLocal(getPdfTool(trigger.dataset.pdfTool),trigger));
 $('pdf-close').addEventListener('click',()=>dialog.close());
 dialog.addEventListener('close',()=>{runId++;clearDownload();selectedFiles=[];fileInput.value='';document.documentElement.classList.remove('pdf-modal-open');previousFocus?.focus();});
 dialog.addEventListener('click',event=>{const box=dialog.getBoundingClientRect();if(event.target===dialog&&(event.clientX<box.left||event.clientX>box.right||event.clientY<box.top||event.clientY>box.bottom))dialog.close();});
@@ -81,4 +75,3 @@ $('pdf-print').addEventListener('click',()=>{
 });
 for(const id of ['pdf-pages','pdf-text','pdf-angle'])$(id).addEventListener('input',()=>{result.hidden=true;});
 renderCatalog();
-fetch('/api/pdf-service').then(response=>response.ok?response.json():Promise.reject()).then(config=>{if(config.available){const url=new URL(config.baseUrl);if(url.protocol==='https:'){server=config;$('pdf-server-note').textContent='As ferramentas avançadas abrem em uma nova aba no servidor da WJ. Os arquivos selecionados lá serão enviados para processamento.';}}renderCatalog();}).catch(()=>{});

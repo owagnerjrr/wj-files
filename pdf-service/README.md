@@ -1,12 +1,12 @@
-# WJ PDF — servidor de processamento (aguardando ativação)
+# WJ PDF — proposta de servidor arquivada
 
-## Estado
+## Estado atual
 
-A página `/ferramentas/pdf` tem 14 ferramentas locais implementadas, busca, categorias, seleção e ordenação de arquivos, download e mensagens de erro. O catálogo também descreve conversões Office, OCR, compressão, reparo, PDF/A, edição, assinatura visual, formulários, senhas, ocultação permanente e comparação.
+O servidor próprio não será ativado. A página `/ferramentas/pdf` mantém 14 ferramentas locais e encaminha as outras 19 diretamente à ferramenta correspondente no iLovePDF. Os links abrem em nova aba e não transferem arquivos automaticamente. Não há chamada do catálogo ao endpoint legado `/api/pdf-service`.
 
-As ferramentas avançadas ficam desabilitadas enquanto `WJ_PDF_SERVER_URL` não está configurado. Elas abrem as rotas oficiais do motor em uma nova aba. As conversões agrupadas abrem `/convert`, onde o visitante seleciona os formatos. O envio de documentos acontece nessa interface, não no catálogo WJ. Não há proxy de uploads pela Vercel.
+Os arquivos desta pasta são apenas um estudo anterior, não uma implantação ativa. Não criar serviços pagos nem configurar `WJ_PDF_SERVER_URL` ou `WJ_PDF_AI_ENABLED` para o catálogo atual. Nenhum serviço Render foi contratado.
 
-O motor ainda NÃO foi criado, executado ou validado em produção. Docker não está disponível no ambiente de desenvolvimento usado nesta implementação. Os cartões avançados são integração preparada, não funções já verificadas de ponta a ponta.
+## Referência histórica (não executar)
 
 ## Implantação preparada para revisão
 
@@ -31,7 +31,7 @@ Fontes: https://docs.stirlingpdf.com/Server/Install/Docker/ e https://render.com
 
 ## Inteligência artificial
 
-Os cartões Resumir e Traduzir estão explicitamente em preparação. Não basta ligar uma flag: requerem configurar e testar o motor de IA e um provedor/modelo, além de consentimento/orçamento para processamento dos documentos. `WJ_PDF_AI_ENABLED` deve continuar ausente ou false até a integração estar validada. A imagem básica não inclui o motor de IA; a imagem fat tem recomendação de memória maior. Não prometer preservação perfeita de layout na tradução.
+Os cartões Resumir e Traduzir agora apontam para o iLovePDF. O restante deste parágrafo descreve apenas a antiga proposta de servidor próprio. Não basta ligar uma flag: requerem configurar e testar o motor de IA e um provedor/modelo, além de consentimento/orçamento para processamento dos documentos. `WJ_PDF_AI_ENABLED` deve continuar ausente ou false até a integração estar validada. A imagem básica não inclui o motor de IA; a imagem fat tem recomendação de memória maior. Não prometer preservação perfeita de layout na tradução.
 
 ## Bibliotecas locais
 
