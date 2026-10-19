@@ -4,7 +4,7 @@ const sections=[...document.querySelectorAll('[data-section]')];
 const normalize=value=>value.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
 function filter(){
  const term=normalize(form.querySelector('input').value.trim());
- const type=document.getElementById('recommend-type').value,category=document.getElementById('recommend-category').value;
+ const type=(document.getElementById('recommend-type')?.value||''),category=document.getElementById('recommend-category').value;
  let total=0;
  for(const card of cards){card.hidden=!!((type&&card.dataset.type!==type)||(category&&card.dataset.category!==category)||!normalize(card.dataset.search).includes(term));if(!card.hidden)total++;}
  const filtering=!!(term||type||category);
