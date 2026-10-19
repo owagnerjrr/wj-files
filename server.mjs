@@ -15,6 +15,7 @@ const types = {'.html':'text/html; charset=utf-8','.css':'text/css; charset=utf-
 const routes = new Map([
   ['/', '/portfolio.html'],
   ['/dicas', '/dicas.html'],
+  ['/indicacoes', '/indicacoes.html'],
   ['/ferramentas', '/ferramentas.html'],
   ['/ferramentas/pdf', '/pdf.html'],
   ['/dicas/como-formatar-computador', '/dicas/como-formatar-computador.html'],

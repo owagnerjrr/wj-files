@@ -1,3 +1,4 @@
+import {buildRecommendations} from './scripts/build-indicacoes.mjs';
 import {buildPdf} from './scripts/build-pdf.mjs';
 import {build as bundle} from 'esbuild';
 import {buildTips} from './scripts/build-dicas.mjs';
@@ -16,6 +17,7 @@ for(const article of localPublishedArticles){
 async function walk(dir){const out=[];for(const item of await readdir(dir,{withFileTypes:true})){const p=path.join(dir,item.name);if(item.isDirectory())out.push(...await walk(p));else out.push(p)}return out;}
 await buildTips();
 await buildPdf();
+await buildRecommendations();
 await bundle({entryPoints:['src/tools.js'],bundle:true,minify:true,platform:'browser',outfile:'public/tools.bundle.js',legalComments:'eof'});
 await bundle({entryPoints:['src/pdf-tools.js'],bundle:true,minify:true,platform:'browser',format:'esm',outfile:'public/pdf-tools.bundle.js',legalComments:'eof'});
 await mkdir('public/vendor/pdfjs',{recursive:true});
