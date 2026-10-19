@@ -2,7 +2,7 @@
 
 ## Estado
 
-A página `/ferramentas/pdf` tem 12 ferramentas locais implementadas, busca, categorias, seleção e ordenação de arquivos, download e mensagens de erro. O catálogo também descreve conversões Office, OCR, compressão, reparo, PDF/A, edição, assinatura visual, formulários, senhas, ocultação permanente e comparação.
+A página `/ferramentas/pdf` tem 14 ferramentas locais implementadas, busca, categorias, seleção e ordenação de arquivos, download e mensagens de erro. O catálogo também descreve conversões Office, OCR, compressão, reparo, PDF/A, edição, assinatura visual, formulários, senhas, ocultação permanente e comparação.
 
 As ferramentas avançadas ficam desabilitadas enquanto `WJ_PDF_SERVER_URL` não está configurado. Elas abrem as rotas oficiais do motor em uma nova aba. As conversões agrupadas abrem `/convert`, onde o visitante seleciona os formatos. O envio de documentos acontece nessa interface, não no catálogo WJ. Não há proxy de uploads pela Vercel.
 
@@ -34,5 +34,7 @@ Fontes: https://docs.stirlingpdf.com/Server/Install/Docker/ e https://render.com
 Os cartões Resumir e Traduzir estão explicitamente em preparação. Não basta ligar uma flag: requerem configurar e testar o motor de IA e um provedor/modelo, além de consentimento/orçamento para processamento dos documentos. `WJ_PDF_AI_ENABLED` deve continuar ausente ou false até a integração estar validada. A imagem básica não inclui o motor de IA; a imagem fat tem recomendação de memória maior. Não prometer preservação perfeita de layout na tradução.
 
 ## Bibliotecas locais
+
+Word para PDF aceita DOCX e usa `docx-preview` com a impressão nativa do navegador; o usuário escolhe Salvar como PDF. PDF para Word extrai texto com `pdfjs-dist` e gera um DOCX simples com `docx`, sem imagens ou diagramação original. Nenhuma dessas duas funções depende do servidor pago.
 
 `pdf-lib` manipula páginas e texto adicionado. `pdfjs-dist` renderiza PDF para JPG e extrai texto simples para Markdown. `jszip` empacota páginas/imagens para download. Assets de worker, fontes e CMaps são copiados localmente no build. Não existe envio de arquivos por essas ferramentas locais.
