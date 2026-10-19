@@ -9,3 +9,6 @@ dist/
 Thumbs.db
 
 public/tools.bundle.js
+
+public/pdf-tools.bundle.js
+public/vendor/pdfjs/

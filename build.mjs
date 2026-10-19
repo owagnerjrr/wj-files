@@ -1,3 +1,4 @@
+import {buildPdf} from './scripts/build-pdf.mjs';
 import {build as bundle} from 'esbuild';
 import {buildTips} from './scripts/build-dicas.mjs';
 import {readdir,readFile,mkdir,cp,copyFile} from 'node:fs/promises';
@@ -14,7 +15,13 @@ for(const article of localPublishedArticles){
 }
 async function walk(dir){const out=[];for(const item of await readdir(dir,{withFileTypes:true})){const p=path.join(dir,item.name);if(item.isDirectory())out.push(...await walk(p));else out.push(p)}return out;}
 await buildTips();
+await buildPdf();
 await bundle({entryPoints:['src/tools.js'],bundle:true,minify:true,platform:'browser',outfile:'public/tools.bundle.js',legalComments:'eof'});
+await bundle({entryPoints:['src/pdf-tools.js'],bundle:true,minify:true,platform:'browser',format:'esm',outfile:'public/pdf-tools.bundle.js',legalComments:'eof'});
+await mkdir('public/vendor/pdfjs',{recursive:true});
+await copyFile('node_modules/pdfjs-dist/build/pdf.worker.min.mjs','public/vendor/pdfjs/pdf.worker.min.mjs');
+await cp('node_modules/pdfjs-dist/cmaps','public/vendor/pdfjs/cmaps',{recursive:true});
+await cp('node_modules/pdfjs-dist/standard_fonts','public/vendor/pdfjs/standard_fonts',{recursive:true});
 const files=await walk('public');
 for(const file of files.filter(f=>f.endsWith('.js')))execFileSync(process.execPath,['--check',file],{stdio:'inherit'});
 const html=await readFile('public/index.html','utf8');

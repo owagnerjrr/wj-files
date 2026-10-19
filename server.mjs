@@ -1,3 +1,4 @@
+import pdfService from './api/pdf-service.js';
 import shorten from './api/shorten.js';
 import redirect from './api/redirect.js';
 import http from 'node:http';
@@ -10,11 +11,12 @@ const option = (name) => { const index = args.indexOf(name); return index < 0 ? 
 const port = Number(option('--port') || process.env.PORT || 5173);
 const host = option('--host') || '127.0.0.1';
 const tipsSlugs = ['computador-lento-o-que-fazer','como-fazer-backup','wifi-conectado-sem-internet','como-identificar-golpes','ssd-ou-memoria-ram','atalhos-uteis-windows'];
-const types = {'.html':'text/html; charset=utf-8','.css':'text/css; charset=utf-8','.js':'text/javascript; charset=utf-8','.svg':'image/svg+xml','.webp':'image/webp','.gif':'image/gif','.jpg':'image/jpeg','.png':'image/png'};
+const types = {'.html':'text/html; charset=utf-8','.css':'text/css; charset=utf-8','.js':'text/javascript; charset=utf-8','.mjs':'text/javascript; charset=utf-8','.bcmap':'application/octet-stream','.pfb':'application/octet-stream','.svg':'image/svg+xml','.webp':'image/webp','.gif':'image/gif','.jpg':'image/jpeg','.png':'image/png'};
 const routes = new Map([
   ['/', '/portfolio.html'],
   ['/dicas', '/dicas.html'],
   ['/ferramentas', '/ferramentas.html'],
+  ['/ferramentas/pdf', '/pdf.html'],
   ['/dicas/como-formatar-computador', '/dicas/como-formatar-computador.html'],
 ]);
 for(const slug of tipsSlugs)routes.set(`/dicas/${slug}`, `/dicas/${slug}.html`);
@@ -22,10 +24,11 @@ http.createServer(async(req,res)=>{
   try {
     const route=decodeURIComponent(new URL(req.url,'http://localhost').pathname);
     const clean=route==='/'?route:route.replace(/\/$/,'');
-    if(clean==='/api/shorten' || clean==='/api/redirect' || clean.startsWith('/s/')) {
+    if(clean==='/api/pdf-service' || clean==='/api/shorten' || clean==='/api/redirect' || clean.startsWith('/s/')) {
       res.status=code=>{res.statusCode=code;return res;};
       res.json=value=>{res.setHeader('Content-Type','application/json; charset=utf-8');res.end(JSON.stringify(value));return res;};
       res.send=value=>{res.setHeader('Content-Type','text/plain; charset=utf-8');res.end(value);return res;};
+      if(clean==='/api/pdf-service')return pdfService(req,res);
       const url=new URL(req.url,'http://localhost');
       req.query=Object.fromEntries(url.searchParams);
       if(clean.startsWith('/s/'))req.query.code=clean.slice(3);

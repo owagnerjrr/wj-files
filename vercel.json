@@ -9,6 +9,14 @@
       "destination": "/portfolio.html"
     },
     {
+      "source": "/ferramentas/pdf",
+      "destination": "/pdf.html"
+    },
+    {
+      "source": "/ferramentas/pdf/",
+      "destination": "/pdf.html"
+    },
+    {
       "source": "/ferramentas",
       "destination": "/ferramentas.html"
     },

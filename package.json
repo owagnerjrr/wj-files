@@ -7,11 +7,14 @@
     "dev": "node server.mjs",
     "start": "node server.mjs",
     "build": "node build.mjs",
-    "test": "node --test calendar.test.mjs news.test.mjs editorial.test.mjs tools.test.mjs",
+    "test": "node --test calendar.test.mjs news.test.mjs editorial.test.mjs tools.test.mjs pdf.test.mjs",
     "editorial": "node editorial/cli.mjs"
   },
   "dependencies": {
     "@neondatabase/serverless": "^1.2.0",
+    "jszip": "^3.10.1",
+    "pdf-lib": "^1.17.1",
+    "pdfjs-dist": "^5.4.296",
     "qrcode": "^1.5.4"
   },
   "devDependencies": {
