@@ -22,7 +22,7 @@ export default async function handler(req, res) {
     if (counts.some(row => row.hits > (row.bucket.startsWith('ip:')?20:1000))) {res.setHeader('Retry-After','3600');return res.status(429).json({error:'Limite de criação atingido. Tente novamente mais tarde.'});}
     await sql`DELETE FROM short_link_limits WHERE expires_at < now()`;
     for (let attempt=0;attempt<3;attempt++) {
-      const code=randomBytes(6).toString('base64url');
+      const code=randomBytes(5).toString('base64url').slice(0,6);
       const inserted=await sql`INSERT INTO short_links (code,destination) VALUES (${code},${destination}) ON CONFLICT (code) DO NOTHING RETURNING code`;
       if (inserted.length) return res.status(201).json({code});
     }

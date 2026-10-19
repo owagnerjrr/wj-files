@@ -16,7 +16,7 @@ test('QR Code pode ser decodificado com URL, acentos e emojis',()=>{
 test('links aceitam HTTP público e rejeitam protocolos, credenciais, IPs e loops',()=>{
  assert.equal(normalizeDestination(' https://example.com/a?x=1&y=2 '),'https://example.com/a?x=1&y=2');
  for(const url of ['javascript:alert(1)','data:text/html,oi','file:///etc/passwd','https://user:pass@example.com','http://localhost','http://127.0.0.1','http://[::1]','http://10.0.0.1','http://foo.local','https://www.wjfiles.com.br/s/abcdefgh','x'.repeat(2049)])assert.throws(()=>normalizeDestination(url));
- assert.ok(validCode('abCD_1-2'));for(const code of ['../','abc',['abcdefgh'],null])assert.ok(!validCode(code));
+ assert.ok(validCode('abCD_1-2'));assert.ok(validCode('abCD_1'));assert.ok(!validCode('abcde'));assert.ok(!validCode('abcdefghi'));for(const code of ['../','abc',['abcdefgh'],null])assert.ok(!validCode(code));
 });
 test('API rejeita método errado e link inexistente sem consultar o banco',async()=>{
  let res=response();await shorten({method:'GET'},res);assert.equal(res.code,405);

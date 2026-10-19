@@ -8,7 +8,7 @@ Página pública: `/ferramentas`. QR Code processado no navegador, com a bibliot
 - `/s/abcdefgh` consulta o destino salvo e responde com redirecionamento HTTP 302.
 - Variável privada `SHORTLINK_DATABASE_URL` configurada na Vercel, apontando para o projeto separado `wj-files-tools` no Neon. Não expor no navegador.
 - Esquema versionado em `migrations/001-short-links.sql`. Tabelas já provisionadas; nenhuma criação de tabela acontece durante os pedidos.
-- Códigos aleatórios de 8 caracteres, sem vencimento automático. Cada destino tem no máximo 2.048 caracteres. Não aceita protocolos executáveis, credenciais, IPs literais ou endereços locais.
+- Novos códigos aleatórios de 6 caracteres; códigos antigos de 8 caracteres continuam válidos, sem vencimento automático. Cada destino tem no máximo 2.048 caracteres. Não aceita protocolos executáveis, credenciais, IPs literais ou endereços locais.
 - Limite compartilhado no banco: 20 tentativas válidas/hora por conexão e 1.000/dia no total. IP é transformado por HMAC; endereços IP não são salvos em texto. Contadores antigos expiram e são limpos nas próximas criações.
 - A coluna `disabled` permite desativar individualmente um link pelo banco em caso de abuso. Não há listagem pública de destinos nem painel administrativo exposto.
 

@@ -1,5 +1,6 @@
 import QRCode from 'qrcode';
 const $=id=>document.getElementById(id);
+const shortOrigin=location.hostname==='www.wjfiles.com.br'?'https://wjfiles.com.br':location.origin;
 const qrForm=$('qr-form'), qrText=$('qr-text'), canvas=$('qr-canvas'), qrResult=$('qr-result'), qrStatus=$('qr-status');
 let qrValue='';
 qrForm.addEventListener('submit', async event=>{
@@ -17,7 +18,7 @@ shortForm.addEventListener('submit',async event=>{
   event.preventDefault();shortResult.hidden=true;shortStatus.textContent='';
   let url;try{url=new URL(shortInput.value.trim());if(!['http:','https:'].includes(url.protocol)||url.username||url.password)throw Error();}catch{shortStatus.textContent='Cole um link completo, começando com https:// ou http://.';shortInput.focus();return;}
   shortButton.disabled=true;shortButton.textContent='Encurtando…';
-  try{const response=await fetch('/api/shorten',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({url:url.href}),signal:AbortSignal.timeout(20000)});const data=await response.json();if(!response.ok)throw Error(data.error||'Não foi possível encurtar o link.');if(!/^[\w-]{8}$/.test(data.code))throw Error('Resposta inválida. Tente novamente.');shortOutput.value=`${location.origin}/s/${data.code}`;$('short-open').href=shortOutput.value;shortResult.hidden=false;shortStatus.textContent='Link criado e salvo! Copie para compartilhar.';}catch(error){shortStatus.textContent=error.name==='TimeoutError'?'A conexão demorou. Tente novamente.':error.message||'Confira sua conexão e tente novamente.';}finally{shortButton.disabled=false;shortButton.textContent='Encurtar link';}
+  try{const response=await fetch('/api/shorten',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({url:url.href}),signal:AbortSignal.timeout(20000)});const data=await response.json();if(!response.ok)throw Error(data.error||'Não foi possível encurtar o link.');if(!/^[\w-]{6,8}$/.test(data.code))throw Error('Resposta inválida. Tente novamente.');shortOutput.value=`${shortOrigin}/s/${data.code}`;$('short-open').href=shortOutput.value;shortResult.hidden=false;shortStatus.textContent='Link criado e salvo! Copie para compartilhar.';}catch(error){shortStatus.textContent=error.name==='TimeoutError'?'A conexão demorou. Tente novamente.':error.message||'Confira sua conexão e tente novamente.';}finally{shortButton.disabled=false;shortButton.textContent='Encurtar link';}
 });
 $('short-copy').addEventListener('click',async()=>{try{await navigator.clipboard.writeText(shortOutput.value);shortStatus.textContent='Link copiado!';}catch{shortOutput.focus();shortOutput.select();shortStatus.textContent='Selecione e copie o link acima.';}});
 $('short-qr').addEventListener('click',()=>{qrText.value=shortOutput.value;qrForm.requestSubmit();$('qr-tool').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});});
