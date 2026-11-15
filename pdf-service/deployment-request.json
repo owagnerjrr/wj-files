@@ -1,0 +1,11 @@
+{
+  "name": "wj-pdf-engine",
+  "repo": "https://github.com/owagnerjrr/wj-files",
+  "branch": "feat/wj-tecnologia-rebrand",
+  "runtime": "docker",
+  "dockerContext": "./pdf-service",
+  "dockerfilePath": "./pdf-service/Dockerfile",
+  "plan": "2c-4g",
+  "region": "virginia",
+  "autoDeploy": "no"
+}

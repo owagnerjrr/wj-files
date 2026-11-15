@@ -1,0 +1,45 @@
+security:
+  enableLogin: false
+system:
+  defaultLocale: pt-BR
+  showSettingsWhenNoLogin: false
+  enableAnalytics: false
+  enablePosthog: false
+  enableScarf: false
+  enableUrlToPDF: false
+  disableSanitize: false
+  fileUploadLimit: 25MB
+  tempFileManagement:
+    maxAgeHours: 1
+    cleanupIntervalMinutes: 5
+    startupCleanup: true
+    cleanupSystemTemp: false
+storage:
+  enabled: false
+ui:
+  appNameNavbar: WJ PDF
+processExecutor:
+  sessionLimit:
+    libreOfficeSessionLimit: 1
+    pdfToHtmlSessionLimit: 1
+    qpdfSessionLimit: 1
+    tesseractSessionLimit: 1
+    pythonOpenCvSessionLimit: 1
+    weasyPrintSessionLimit: 1
+    calibreSessionLimit: 1
+    imageMagickSessionLimit: 1
+    ghostscriptSessionLimit: 1
+    ocrMyPdfSessionLimit: 1
+  timeoutMinutes:
+    libreOfficetimeoutMinutes: 3
+    pdfToHtmltimeoutMinutes: 3
+    pythonOpenCvtimeoutMinutes: 3
+    weasyPrinttimeoutMinutes: 3
+    calibretimeoutMinutes: 3
+    imageMagickTimeoutMinutes: 3
+    tesseractTimeoutMinutes: 3
+    qpdfTimeoutMinutes: 3
+    ghostscriptTimeoutMinutes: 3
+    ocrMyPdfTimeoutMinutes: 3
+aiEngine:
+  enabled: false
