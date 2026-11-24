@@ -27,7 +27,7 @@ await cp('node_modules/pdfjs-dist/standard_fonts','public/vendor/pdfjs/standard_
 const files=await walk('public');
 for(const file of files.filter(f=>f.endsWith('.js')))execFileSync(process.execPath,['--check',file],{stdio:'inherit'});
 const html=await readFile('public/index.html','utf8');
-for(const [,asset] of html.matchAll(/(?:src|href)="(\/[^"#]+\.(?:js|css))"/g))await readFile('public'+asset);
+for(const [,asset] of html.matchAll(/(?:src|href)="(\/[^"#]+\.(?:js|css))"/g)){ if(asset === '/_vercel/insights/script.js') continue; await readFile('public'+asset); }
 await mkdir('dist',{recursive:true});await cp('public','dist',{recursive:true});
 // O domínio principal deve abrir WJ Tecnologia; o portal legado permanece apenas como arquivo de origem.
 await copyFile('public/portfolio.html','dist/index.html');
